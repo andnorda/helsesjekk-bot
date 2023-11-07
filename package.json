@@ -2,7 +2,6 @@
     "name": "helsesjekk",
     "version": "1.0.0",
     "license": "MIT",
-    "packageManager": "yarn@4.0.1",
     "engines": {
         "node": "20"
     },
@@ -13,12 +12,12 @@
         "start": "next start",
         "lint": "next lint",
         "test": "bun test tests",
-        "start:migrate": "yarn prisma:migrate && yarn start",
+        "start:migrate": "bun run prisma:migrate && bun run start",
         "prisma:generate": "prisma generate",
         "prisma:migrate": "prisma migrate deploy",
         "prisma:migrate-dev": "prisma migrate dev",
         "prisma:seed": "bun run seed/seed.ts | pino-pretty",
-        "postinstall": "node ./scripts/postinstall.js"
+        "postinstall": "bun run prisma:generate && bun run ./scripts/postinstall.js"
     },
     "dependencies": {
         "@navikt/aksel-icons": "^5.9.2",
